@@ -22,7 +22,7 @@
 <!-- Responsive -->
 <link href="css/responsive.css" rel="stylesheet" />
 
-<script src="js/validation.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -112,50 +112,50 @@
 			</div>
 
 			<div class="contect_text">So we can successfully match your details with suitable people, we first need to collect some information about you. Read each question carfully and  select or place a tick in the box for each of your characteristics. Please answer as honestly as you can, otherwise you may be disappointed with your matches and they with you.</div>
-			<form action="#" onsubmit="return validator()">
+			<form action="partners_preference_form.html" onsubmit="return compulsory()">
 			<div class="form_container_block">
 				<ul>
 					<li class="fileds">
 						<div class="name_fileds">
 							<label>First Name</label>
-							<input name="firstname" type="text" />
+							<input name="firstname" id="fname" type="text" />
 						</div>
 						<div class="name_fileds">
 							<label>Last Name</label>
-							<input name="lastname" type="text" /> 
+							<input name="lastname" id= "lname" type="text" /> 
 						</div>
 					</li>
 					<li class="fileds">
 						<div class="phone_fileds">
 							<label>Phone No</label>
-							<input name="phone" type="text" onblur="phone()" /> 
+							<input name="phone" id="phoneno" type="text" onblur="phoneNumber()" /> 
 						</div>
 						<div class="phone_fileds" >
 							<label>Office No</label>
-							<input name="office" type="text" onblur="office()" /> 
+							<input name="office" id="officeno" type="text" onblur="officeNumber()" /> 
 						</div>
 					</li>					
 					<li class="fileds">
 						<div class="email_fileds">
 							<label>Email</label>
-							<input name="email" type="text"  onblur="email()"/> 
+							<input name="email" id="emailid" type="text"  onblur="mailId()"/> 
 						</div>
 						<div class="pass_fileds">
 							<label>Password</label>
-							<input name="password" type="password" onblur="password()" /> 
+							<input name="password" id="pass" type="password" onblur="passEnter()" /> 
 						</div>
 					</li>
 					<li class="fileds">
 						<div class="pass_fileds">
 							<label>Confirm Password</label>
-							<input name="password" type="password" onblur="confirmPassword()" /> 
+							<input name="password" id="cnfpas" type="password" onblur="confirmPassword()" /> 
 						</div>
 							<div class="dob_fileds selectbox">
 								<label id="birthdate">My birthdate is</label>
 
 								<ul>
 									<li>
-										<select name="month" class="select month" id="month" onchange =        "ageBdae()">
+										<select name="month" class="select month" id="month" onchange ="ageBdae()">
 											<option value="jan">Jan</option>
 											<option value="feb">Feb</option>
 											<option value="march">March</option>
@@ -209,7 +209,7 @@
 									</li>
 
 									<li>
-										<select name="year" class="select year" id="year" onchange="return ageBdae()">
+										<select name="year" class="select year" id="year" onchange="ageBdae()">
 											<option value="1990">1990</option>
 											<option value="1991">1991</option>
 											<option value="1992">1992</option>
@@ -269,7 +269,7 @@
 						</div>
 						<div class="about_you_fileds">
 						<label>About you</label>
-						<textarea></textarea>
+						<textarea id="aboutu"></textarea>
 						</div>						
 					</li>
 				</ul>
@@ -451,7 +451,7 @@ Live a life without regrets and take action today!</p>
 <!-- jQuery library (served from Google) -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="js/script.js" type="text/javascript"></script>
-
+<script src="js/validation.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.select').each(function(){

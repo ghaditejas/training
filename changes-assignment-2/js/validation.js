@@ -1,5 +1,12 @@
+var phone=document.getElementById("phoneno");
+var password0=document.getElementById("pass");
+var password1=document.getElementById("cnfpas");
+var email=document.getElementById("emailid");
+var office=document.getElementById("officeno");
+
 /*
 	   * Calculates the age of the user from his Birthdate 
+	   * @return boolean 
 */
 function ageBdae(){
 	var day=document.getElementById("day").value;
@@ -13,39 +20,85 @@ function ageBdae(){
 	var age = (age_msec / (86400000 * 365));
 	age = age.toFixed(1);
 	document.getElementById("age").value=age;
-	return false;
 	
 }
 /*
 	   * Checks whether the  phone_no. is 10 digit and does not contain alphabets
+	   * @return boolean 
 */
-function phone()
+//function palceError(msg,elem){
+//	msg.insertAfter(elem);
+//}
+function phoneNumber()
 {
-  var phone_no=document.getElementsByName("phone")[0].value;
-  	if( isNaN(phone_no) || phone_no > 9999999999)
-  	alert("Invalid Phone No.");
+  
+  var phone_no=phone.value;
+  	if( isNaN(phone_no) )
+  	{
+  		//palceError("<span class='error'>Invalid Phone No: Phone no. consist of alphabets</spna>",phone);
+  		alert("Invalid Phone No: Phone no. consist of alphabets");
+  		return false;
+  	}
+   else if( phone_no > 9999999999)
+	{
+		alert("Invalid Phone No: phone consist digits more than 10");
+		return false;
+	}
+	else if(phone_no < 1000000000)
+	{
+		alert("Invalid Phone No: phone consist digits less than 10");
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
 }
 /*
 	   * Checks whether the  offic_no. entered contains alphabets  
+	   * @return boolean 
 */
-function office()
+function officeNumber()
 {
-	var phone_no=document.getElementsByName("office")[0].value;
+	var phone_no=office.value;
 	if(/[a-z]/.test(phone_no))
-	alert("Invalid Office No.");
+	{
+		alert("Invalid Office No:Given Office no. contains alphabets ");
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
 }
 /*
 	   * Validates the entered Password with respect to its length and whether it contains digiit and 
 	   	 special character 
+	   * @return boolean 
 */
 
-function password0()
+function passEnter()
 {
-	var password1=document.getElementsByName("password")[0].value;
+	var password1=password0.value;
 	var password_length=password1.length;
-	if(password_length <8 || password_length > 12||/[0-9\!@#$%&*()]/.test(password1))
+	if(password_length <8)
 	{	
-		alert("Input does not match the specificaton");
+		alert("Input does not match the specificaton: Inputed Password is less than 8 characters");
+		return false;
+	}
+	else if(password_length > 12)
+	{	
+		alert("Input does not match the specificaton: Inputed Password is more than 12 characters");
+		return false;
+	}
+	else if(/[0-9\!@#$%&*()]/.test(password1))
+	{	
+		alert("Input does not match the specificaton: Password inputed contains number and special characters");
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 /*
@@ -53,33 +106,50 @@ function password0()
 */
 function confirmPassword()
 {
-	var password1=document.getElementsByName("password")[0].value;
-	var password2=document.getElementsByName("password")[1].value;
-	if (password1 != password2)
+	var givenpass=password0.value;
+	var confirmpass=password1.value;
+	if (givenpass != confirmpass)
 	{
 		alert("Password does not match");
-	}
-}
-/*
-	   * Validates the entered email   
-*/
-function emailId()
-{
-	var emailId=document.getElementsByName("email")[0].value;
-	var at=emailId.indexOf("@");
-	var dot=emailId.indexOf(".");
-	var lastDot=emailId.lastIndexOf(".");
-	if(at < 1 || dot < 1 || emailId.charAt(dot+1) == "." || emailId.charAt(at+1) == "."||at+2 > lastDot || lastDot+2 >=emailId.length)
-		alert("Invalid Email ID");
-}
-/*
-	   * Calls the   partners_preference_form.html after recieving input from compulsory function
-*/
-function validator()
-{
-	var result = compulsory();
-	if(!result)
 		return false;
+	}
+	else 
+		return true;
+}
+/*
+	   * Validates the entered email
+	   * @return boolean   
+*/
+function mailId()
+{	
+	var email_Id=email.value;
+	var at=email_Id.indexOf("@");
+	var dot=email_Id.indexOf(".");
+	var lastDot=email_Id.lastIndexOf(".");
+	if(at<1)
+	{
+		alert("Invalid Email Id: Entered Id does not contain @ or id starts wth '@' ");
+		return false;
+	}
+	else if(dot < 1 )
+	{
+		alert("Invalid Email ID:Entered Id starts with '.' ");
+		return false;
+	}
+	else if(email_Id.charAt(dot+1) == "." || email_Id.charAt(at+1) == ".")
+	{
+		alert("Invalid Email Id:Entered Id consist of '.' after '@' or '.' ");
+		return false;
+	}
+	else if(lastDot+2 >=email_Id.length)
+	{
+		alert("inavlid Email Id:Domain(TLD) not proper")
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
 }
 /*
 	   * Checks whether all the Required fields are filled or not
@@ -89,107 +159,204 @@ function compulsory()
 {
 	var found = 0;
 	var i = 0;
-	var firstName=document.getElementsByName("firstname")[0].value;
-	var lastName=document.getElementsByName("lastname")[0].value;
-	var phone_number=document.getElementsByName("phone")[0].value;
-	var email_Id=document.getElementsByName("email")[0].value;
-	var pass=document.getElementsByName("password")[0].value;
-	var confirm_pass=document.getElementsByName("password")[1].value;
-	var about_you=document.getElementsByTagName("textarea")[0].value;
-	var age=document.getElementsByName("age")[0].value;
+	var fName=document.getElementById("fname")
+	var firstName=fName.value;
+	var lName=document.getElementById("lname")
+	var lastName=lName.value;
+	var phone_number=phone.value;
+	var email_Id=email.value;
+	var pass=password0.value;
+	var confirm_pass=password1.value;
+	var about=document.getElementById("aboutu");
+	var about_you=about.value;
+	var age=document.getElementById("age").value;
 	var radio1=document.getElementsByName("radio")[0].checked;
     var radio2=document.getElementsByName("radio")[1].checked;
     var checkbox1=document.getElementById("checkbox_sample18").checked;
     var checkbox2=document.getElementById("checkbox_sample19").checked;
-    var checkbox3=document.getElementById("checkbox_sample20").checked;
-	//while(i<=10)
-	//{
-		if ((firstName == null || firstName == "") && i<1)
-		{
-			i++;																		
+    var checkbox3=document.getElementById("checkbox_sample20").checked; 
+		if (firstName == null || firstName == "") 		
+		{																	
 			found = 1;
-			var a=document.getElementsByName("firstname")[0];
-			a.style.borderColor = "red";
-			a.focus();
-			return false;
+			fName.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				fName.focus();
+			}
 		}
 		else
 		{
-				document.getElementsByName("firstname")[0].style.border = "1px solid #e1e1e1";
-				return false;
+				fName.style.border = "1px solid #e1e1e1";
 		} 
-		/*else if((lastName == null || lastName == "") && i<2) 
-		{	
-			i++;
+		if(lastName == null || lastName == "")
+		{																	
 			found = 1;
-			document.getElementsByName("lastname")[0].style.borderColor = "red";
+			lName.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				lName.focus();
+			}
 		}
-		else if((phone_number== null || phone_number == "") && i<3)
+		else
 		{
-			i++;
-			found = 1;
-			document.getElementsByName("phone")[0].style.borderColor = "red";
+				lName.style.border = "1px solid #e1e1e1";
 		}
-		else if((email_Id == null || email_Id == "") && i<4)
+		if(phone_number== null || phone_number == "")
+		{
+			found = 1;
+			phone.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				lName.focus();
+			}
+		}
+		else if(!phoneNumber())
+		{
+			found = 1;
+			phone.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				phone.focus();
+			}
+		}
+		else
+		{
+				phone.style.border = "1px solid #e1e1e1";
+		} 
+		if (!officeNumber())
+		{
+			found = 1;
+			office.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				office.focus();
+			}
+		}
+		else
+		{
+			office.style.border = "1px solid #e1e1e1";
+		} 
+		if(email_Id == null || email_Id == "")
    		{
-   			i++;
+   			
    			found = 1;
-   			document.getElementsByName("email")[0].style.borderColor = "red";
+			email.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				email.focus();
+			}
    		}
-   		else if (  (pass == null || pass == "") && i<5)
+   		else if(!mailId())
    		{
-   			i++;
    			found = 1;
-   			document.getElementsByName("password")[0].style.borderColor = "red";
+			email.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				email.focus();
+			}
+			//return false
    		}
-   		else if((confirm_pass == null || confirm_pass == "") && i<6)
+   		else
    		{
-   			i++;
+   			email.style.border = "1px solid #e1e1e1";
+   		}
+   		if (pass == null || pass == "") 
+   		{
+   			
    			found = 1;
-   			document.getElementsByName("password")[1].style.borderColor = "red"
+			password0.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				password0.focus();
+			}
    		}
-   		else if ((about_you == null || about_you == "") && i<7)
+   		else if(!passEnter())
    		{
-   			i++;
    			found = 1;
-   			document.getElementsByTagName("textarea")[0].style.borderColor = "red";
+			password0.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				password0.focus();
+			}
+			//return false;
    		}
-   		else if(!radio1 && !radio2 && i<8)
+   		else
    		{
-			i++;
+   			password0.style.border = "1px solid #e1e1e1";
+   		}
+   		if(confirm_pass == null || confirm_pass == "")
+   		{
+   			
+   			found = 1;
+			password1.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				password1.focus();
+			}
+
+   		}
+   		else if(!confirmPassword())
+   		{
+   			found = 1;
+			password1.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				password1.focus();
+			}
+			//return false;
+   		}
+   		else
+   		{
+   			password1.style.border = "1px solid #e1e1e1";
+   		}
+   		if (about_you == null || about_you == "")
+   		{	
+   			found = 1;
+			about.style.borderColor = "red";
+			if(i==0)
+			{
+				i=1;
+				email.focus();
+			}
+   		}
+   		if(!radio1 && !radio2 )
+   		{
+			
    			found = 1;
    			document.getElementById("gender").innerHTML = "Please Select Your Gender";
    			//document.getElementsByName("radio")[1].style.background = "red";
 
    		}
-   		else if (!checkbox1 && !checkbox2 && !checkbox3 && i<9)
+   		if (!checkbox1 && !checkbox2 && !checkbox3)
    		{
-   			i++;
+   			
    			found = 1;
    			document.getElementById("interest").innerHTML = "Atleast 1 Interest Required ";
    		}
-   		else if (age == "" && i<10)
+   		if (age == "")
    		{
-   			i++;
+   			
    			found = 1;
    			document.getElementById("birthdate").innerHTML = "Please Select Your Birthdate";
    		}
-   		else if(found == 1)
+   		if(found == 1)
    		{
-   			i++;
-   			alert ("Fill the required fields");
+   			return false;
+   			
    		}
    		else 
    		{
-   			i++;
+   			return true;
    		}
-	}
-	if (found == 1)
-	{
-		return false;
-	}
-	else 
-	{
-		return true;
-	}*/
 }
