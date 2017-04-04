@@ -1,6 +1,6 @@
 // JavaScript Document
 jQuery(document).ready(function() {
-		<!-- Js for Menu -->	
+		//<!-- Js for Menu -->	
 	
 		jQuery(".toggle_menu a").click(function () {
 			jQuery("#topMenu").slideToggle("fast");
