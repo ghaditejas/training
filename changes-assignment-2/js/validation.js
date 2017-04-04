@@ -18,7 +18,7 @@ function ageBdae(){
 	var current_msec=Date.parse(current);
 	var age_msec = current_msec - bday_msec;
 	var age = (age_msec / (86400000 * 365));
-	age = age.toFixed(1);
+	age = Math.floor(age);
 	document.getElementById("age").value=age;
 	
 }
@@ -338,17 +338,29 @@ function compulsory()
    			//document.getElementsByName("radio")[1].style.background = "red";
 
    		}
+   		else 
+   		{
+   			document.getElementById("gender").innerHTML = "Gender";
+   		}
    		if (!checkbox1 && !checkbox2 && !checkbox3)
    		{
    			
    			found = 1;
    			document.getElementById("interest").innerHTML = "Atleast 1 Interest Required ";
    		}
+   		else
+   		{
+			document.getElementById("interest").innerHTML = "Interest";
+   		}
    		if (age == "")
    		{
    			
    			found = 1;
    			document.getElementById("birthdate").innerHTML = "Please Select Your Birthdate";
+   		}
+   		else
+   		{
+   			document.getElementById("birthdate").innerHTML = "My Birthdate is";	
    		}
    		if(found == 1)
    		{
