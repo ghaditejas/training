@@ -210,7 +210,7 @@ function compulsory()
 			if(i==0)
 			{
 				i=1;
-				lName.focus();
+				phone.focus();
 			}
 		}
 		else if(!phoneNumber())
