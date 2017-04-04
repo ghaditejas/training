@@ -116,43 +116,48 @@
 			<div class="form_container_block">
 				<ul>
 					<li class="fileds">
-						<div class="name_fileds">
-							<label>First Name</label>
-							<input name="firstname" id="fname" type="text" />
+						<div class="name_fileds form_input_fields">
+							<label>First Name*</label>
+							<input class="required"  name="firstname" id="fname" type="text" />
+							<span class="error_msg"></span>
 						</div>
-						<div class="name_fileds">
-							<label>Last Name</label>
-							<input name="lastname" id= "lname" type="text" /> 
+						<div class="name_fileds form_input_fields">
+							<label>Last Name*</label>
+							<input class="required"  name="lastname" id= "lname" type="text" /> 
+							<span class="error_msg"></span>
 						</div>
 					</li>
 					<li class="fileds">
-						<div class="phone_fileds">
-							<label>Phone No</label>
-							<input name="phone" id="phoneno" type="text" onblur="phoneNumber()" /> 
+						<div class="phone_fileds form_input_fields">
+							<label>Phone No*</label>
+							<input class="required"  name="phone" id="phoneno" type="text"/> 
+							<span class="error_msg"></span>
 						</div>
-						<div class="phone_fileds" >
+						<div class="phone_fileds form_input_fields" >
 							<label>Office No</label>
-							<input name="office" id="officeno" type="text" onblur="officeNumber()" /> 
+							<input class="required"  name="office" id="officeno" type="text"/> 
+							<span class="error_msg"></span>
 						</div>
 					</li>					
 					<li class="fileds">
-						<div class="email_fileds">
-							<label>Email</label>
-							<input name="email" id="emailid" type="text"  onblur="mailId()"/> 
+						<div class="email_fileds form_input_fields">
+							<label>Email*</label>
+							<input class="required"  name="email" id="emailid" type="text"/> <span class="error_msg"></span>
 						</div>
-						<div class="pass_fileds">
-							<label>Password</label>
-							<input name="password" id="pass" type="password" onblur="passEnter()" /> 
+						<div class="pass_fileds form_input_fields">
+							<label>Password*</label>
+							<input class="required"  name="password" id="pass" type="password" /> 
+							<span class="error_msg"></span>
 						</div>
 					</li>
 					<li class="fileds">
-						<div class="pass_fileds">
-							<label>Confirm Password</label>
-							<input name="password" id="cnfpas" type="password" onblur="confirmPassword()" /> 
+						<div class="pass_fileds form_input_fields">
+							<label>Confirm Password*</label>
+							<input class="required"  name="password" id="cnfpas" type="password"/> 
+							<span class="error_msg"></span>
 						</div>
 							<div class="dob_fileds selectbox">
 								<label id="birthdate">My birthdate is</label>
-
 								<ul>
 									<li>
 										<select name="month" class="select month" id="month">
@@ -246,14 +251,14 @@
 							</div>
 					</li>
 					<li class="fileds">
-						<div class="age_fileds">
+						<div class="age_fileds form_input_fields">
 							<label>Age</label>
 							<input name="age" type="text" id="age" disabled="disabled" /> 
 						</div>
 						<div class="gender_fileds">
 							<label id="gender">Gender</label>
 							<ul>
-								<li><input type="radio" class="radio" id="residence1" name="radio" /><label class="radio-label" for="residence1">Male</label></li>
+								<li><input type="radio" class="radio" id="residence1" name="radio"/><label class="radio-label" for="residence1">Male</label></li>
 								<li><input type="radio" class="radio" id="residence2" name="radio" /><label class="radio-label" for="residence2">Female</label></li>
 							</ul>	
 						</div>
@@ -268,8 +273,9 @@
 							</ul>
 						</div>
 						<div class="about_you_fileds">
-						<label>About you</label>
+						<label>About you*</label>
 						<textarea id="aboutu"></textarea>
+						<span class="error_msg"></span>
 						</div>						
 					</li>
 				</ul>
@@ -449,9 +455,10 @@ Live a life without regrets and take action today!</p>
 </div>
 <!--wrapper-starts-->
 <!-- jQuery library (served from Google) -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="js/script.js" type="text/javascript"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+<script src="js/jquery3.2.js" type="text/javascript"></script>
 <script src="js/validation.js" type="text/javascript"></script>
+<!-- <script src="js/script.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.select').each(function(){
