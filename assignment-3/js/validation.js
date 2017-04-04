@@ -43,7 +43,7 @@ $(document).ready(function(){
 	var current_msec=Date.parse(current);
 	var age_msec = current_msec - $bday_msec;
 	var age = (age_msec / (86400000 * 365));
-	age = age.toFixed(1);
+	age = Math.floor(age);
 	$("#age").val(age);
 	});
 	$("form").submit(function(){
