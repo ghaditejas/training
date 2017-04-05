@@ -22,8 +22,6 @@
     <!-- Responsive -->
     <link href="css/responsive.css" rel="stylesheet" />
 
-
-
 </head>
 
 <body>
@@ -118,49 +116,48 @@
                                 <li class="fileds">
                                     <div class="name_fileds form_input_fields">
                                         <label>First Name*</label>
-                                        <input class="required"  name="firstname" id="fname" type="text" autofocus />
-                                        <span class="error_msg"></span>
+                                        <input name="firstname" id="fname" type="text" autofocus />
+
                                     </div>
                                     <div class="name_fileds form_input_fields">
                                         <label>Last Name*</label>
-                                        <input class="required"  name="lastname" id= "lname" type="text" /> 
-                                        <span class="error_msg"></span>
+                                        <input name="lastname" id= "lname" type="text" /> 
+
                                     </div>
                                 </li>
                                 <li class="fileds">
                                     <div class="phone_fileds form_input_fields">
                                         <label>Phone No*</label>
-                                        <input class="required"  name="phone" id="phoneno" type="text"/> 
-                                        <span class="error_msg"></span>
+                                        <input   name="phone" id="phoneno" type="text"/> 
+
                                     </div>
                                     <div class="phone_fileds form_input_fields" >
                                         <label>Office No</label>
-                                        <input class="required"  name="office" id="officeno" type="text"/> 
-                                        <span class="error_msg"></span>
+                                        <input   name="office" id="officeno" type="text"/> 
+
                                     </div>
                                 </li>					
                                 <li class="fileds">
                                     <div class="email_fileds form_input_fields">
                                         <label>Email*</label>
-                                        <input class="required"  name="email" id="emailid" type="text"/> <span class="error_msg"></span>
+                                        <input   name="email" id="emailid" type="text"/>
                                     </div>
                                     <div class="pass_fileds form_input_fields">
                                         <label>Password*</label>
-                                        <input class="required"  name="password" id="pass" type="password" /> 
-                                        <span class="error_msg"></span>
+                                        <input   name="password" id="pass" type="password" />  
                                     </div>
                                 </li>
                                 <li class="fileds">
                                     <div class="pass_fileds form_input_fields">
                                         <label>Confirm Password*</label>
-                                        <input class="required"  name="password" id="cnfpas" type="password"/> 
-                                        <span class="error_msg"></span>
+                                        <input   name="cnfpassword" id="cnfpas" type="password"/> 
                                     </div>
                                     <div class="dob_fileds selectbox">
                                         <label id="birthdate">My birthdate is</label>
                                         <ul>
                                             <li>
-                                                <select name="month" class="select month" id="month">
+                                                <select name="month" class="select month required" id="month">
+                                                    <option value="">Select Month</option>
                                                     <option value="jan">Jan</option>
                                                     <option value="feb">Feb</option>
                                                     <option value="march">March</option>
@@ -176,7 +173,8 @@
                                                 </select>
                                             </li>
                                             <li>
-                                                <select name="day" class="select day" id="day">
+                                                <select name="day" class="select day required" id="day">
+                                                   <option value="">select day</option>
                                                     <option value="1">01</option>
                                                     <option value="2">02</option>
                                                     <option value="3">03</option>
@@ -214,7 +212,8 @@
                                             </li>
 
                                             <li>
-                                                <select name="year" class="select year" id="year">
+                                                <select name="year" class="select year required" id="year">
+                                                    <option value="">select year</option>
                                                     <option value="1990">1990</option>
                                                     <option value="1991">1991</option>
                                                     <option value="1992">1992</option>
@@ -253,29 +252,33 @@
                                 <li class="fileds">
                                     <div class="age_fileds form_input_fields">
                                         <label>Age</label>
-                                        <input name="age" type="text" id="age" disabled="disabled" /> 
+                                        <input name="age" type="text" id="age" disabled/> 
                                     </div>
                                     <div class="gender_fileds">
                                         <label id="gender">Gender</label>
                                         <ul>
-                                            <li><input type="radio" class="radio" id="residence1" name="radio"/><label class="radio-label" for="residence1">Male</label></li>
-                                            <li><input type="radio" class="radio" id="residence2" name="radio" /><label class="radio-label" for="residence2">Female</label></li>
+                                            <li><input type="radio" class="radio required" id="residence1" name="radio" /><label class="radio-label" for="residence1">Male</label></li>
+                                            <li><input type="radio" class="radio" id="residence2" name="radio" /><label class="radio-label" for="residence2">Female</label></li>                                            
+                                       
                                         </ul>	
+                                        <label id="genderError" for="gender" class="" style="display:none;">Please select your gender</label>
                                     </div>
+                                    
                                 </li>
                                 <li>
                                     <div class="interest_fileds">
                                         <label id="interest">Interest</label>
                                         <ul>
-                                            <li><input type="checkbox" class="checkbox" id="checkbox_sample18" /> <label class="css-label" for="checkbox_sample18">Biking</label></li>
+                                            <li><input type="checkbox" class="checkbox required" id="checkbox_sample18" /> <label class="css-label" for="checkbox_sample18">Biking</label></li>
                                             <li><input type="checkbox" class="checkbox" id="checkbox_sample19" /> <label class="css-label" for="checkbox_sample19">Reading</label></li>
                                             <li><input type="checkbox" class="checkbox" id="checkbox_sample20" /> <label class="css-label" for="checkbox_sample20">Playing</label></li>
                                         </ul>
+                                        <label id="interestError" for="interest" class="" style="display:none;">Please select Atleast 1 Interest</label>
                                     </div>
                                     <div class="about_you_fileds">
                                         <label>About you*</label>
-                                        <textarea id="aboutu" class="required"></textarea>
-                                        <span class="error_msg"></span>
+                                        <textarea name="about_you" id="aboutu" ></textarea>
+
                                     </div>						
                                 </li>
                             </ul>
@@ -458,19 +461,21 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
     <script src="js/jquery3.2.js" type="text/javascript"></script>
     <script src="js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="js/custom_validation.js" type="text/javascript"></script>
     <script src="js/validation.js" type="text/javascript"></script>
     <!-- <script src="js/script.js" type="text/javascript"></script> -->
     <script type="text/javascript">
                             $(document).ready(function () {
-                                $('.select').each(function () {
-                                    var title = $(this).attr('title');
-                                    if ($('option:selected', this).val() != '')
-                                        title = $('option:selected', this).text();
-                                    $(this).css({'z-index': 10, 'opacity': 0, '-khtml-appearance': 'none'}).after('<span class="select">' + title + '</span>').change(function () {
-                                        val = $('option:selected', this).text();
-                                        $(this).next().text(val);
-                                    })
-                                });
+//                                $('.select').each(function () {
+//                                    var title = $(this).attr('title');
+//                                    if ($('option:selected', this).val() != '')
+//                                        title = $('option:selected', this).text();
+//                                    $(this).css({'z-index': 10, 'opacity': 0, '-khtml-appearance': 'none'}).after('<span class="select">' + title + '</span>').change(function () {
+//                                        val = $('option:selected', this).text();
+//                                        $(this).next().text(val);
+//                                    })
+//                                });
                             });
     </script>
 </body>
