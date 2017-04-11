@@ -793,3 +793,4 @@ table.difference_table tr:nth-child(2n+2){ background:#fff;}
 
 ul.bxslider1 .image_block img{ border: medium none; border-radius: 0; display: inline-block; height: auto; margin: 0 auto; max-width: 100%; padding: 0; width: auto;}
 .toggle_menu{display:none;}
+.table_container_block .btn_products{color: #fff; background:#ef553a  ; border-color:#ed4122;}
