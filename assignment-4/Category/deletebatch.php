@@ -11,6 +11,6 @@ if ($conn->query($sqlquery)) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error();
 }
-header('location:index.php');
 }
+header('location:index.php');
 ?>
