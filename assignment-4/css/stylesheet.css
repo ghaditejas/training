@@ -50,8 +50,8 @@
 /*header-starts*/
 header { width:100%; border-bottom:1px solid #dfdfdf;}
 header.header_fixed{display: block; position: fixed; top: 0; width: 100%; z-index: 10; background-color: #fff;}
-.Logo_Cont{width:358px; height:auto; margin:0 0 0 0; padding:0 0 0 0; border:0px solid red;}
-.Home_Cont_Right{width:636px; height:auto; margin:0 0 0 0; padding:33px 0 0 0; border:0px solid red;}
+.Logo_Cont{ height:auto; margin:0 0 0 0; padding:0 0 0 0; border:0px solid red;}
+.Home_Cont_Right{height:auto; margin:0 0 0 0; padding:33px 0 0 0; border:0px solid red;}
 .Home_Cont_Right_Top{width:100%; height:auto; margin:0 0 0 0; padding:0 0 0 0; border:0px solid red;}
 .Home_Cont_Right_Bottom{width:100%; height:auto; margin:0 0 0 0; padding:0 0 0 0; border:0px solid red;}
 
@@ -794,3 +794,6 @@ table.difference_table tr:nth-child(2n+2){ background:#fff;}
 ul.bxslider1 .image_block img{ border: medium none; border-radius: 0; display: inline-block; height: auto; margin: 0 auto; max-width: 100%; padding: 0; width: auto;}
 .toggle_menu{display:none;}
 .table_container_block .btn_products{color: #fff; background:#ef553a  ; border-color:#ed4122;}
+.table_container_block .btn1 {font-family: 'robotoslab-bold'; font-weight: 500; border-width: 0; padding: 9px 16px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); display: inline-block; cursor: pointer; margin: 0 10px 0 0;}
+
+

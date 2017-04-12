@@ -1,4 +1,7 @@
 <?php
+/*
+ * Adds the category to database  by firing query on it
+ */
 $error = '';
 $success = '';
 $page_load = true;
@@ -16,8 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $success = 'Category added Succesfully';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error();
-        }
-
+        } 
         mysqli_close($conn);
     } else {
         $page_load = true;
@@ -60,6 +62,9 @@ if ($page_load) {
     <script src="../js/jquery.validate.min.js" type="text/javascript"></script> 
     <script src="../js/custom_validation.js" type="text/javascript"></script>
     <script type="text/javascript">
+        /*
+         * Validates the Catergory field , if proper sumbits the  form
+         */
         $(document).ready(function () {
     <?php if (!empty($success)) { ?>
             alert('<?php echo $success; ?>');
@@ -83,7 +88,5 @@ if ($page_load) {
         });
 
     </script>
-    <?php include '../Includes/footer.php'; ?>
-
-<?php } ?>
+<?php include '../Includes/footer.php'; }?>
 

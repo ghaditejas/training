@@ -1,4 +1,7 @@
-<?php 
+<?php
+/*
+  * Connection is established with the data base  
+*/
 $servername = "localhost";
 $username = "root";
 $password = "root";

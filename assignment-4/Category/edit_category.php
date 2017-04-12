@@ -1,4 +1,7 @@
 <?php
+/*
+ * Adds the category to database  by using the id obtained and firing query on database
+ */
 $error = '';
 $success = '';
 $page_load = true;
@@ -69,6 +72,9 @@ if ($page_load) {
     <script src="../js/custom_validation.js" type="text/javascript"></script>
     <script type="text/javascript">
      $(document).ready(function () {
+         /*
+         * Validates the Catergory field , if proper sumbits the  form
+         */
     <?php if (!empty($success)) { ?>
             alert('<?php echo $success; ?>');
     <?php } ?>
