@@ -51,7 +51,8 @@ if ($page_load) {
                         </ul>
                         <div class="next_btn_block">
                             <div class="next_btn">
-                                <center><input type="submit"value="Submit"><img src="../images/small_triangle.png" alt="small_triangle"></center>
+                                <input type="submit"value="Submit" class="btn-success"><img src="../images/small_triangle.png" alt="small_triangle">
+                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px" onclick="javascript:window.location='index.php';"><img src="../images/small_triangle.png" alt="small_triangle">
                             </div>
                         </div>
                     </form>

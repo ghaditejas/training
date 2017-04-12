@@ -45,7 +45,7 @@ include '../Includes/header.php';
                                         <div class="buttons">
                                             <button class="btn btn_edit" onclick="del_func()">Delete</button>
                                             <a  class="btn btn_delete" href="edit_category.php?<?php echo "category_id=" . $row['id']; ?>">Edit</a>
-                                            <a class="btn1 btn-info" href="#">Products</a>
+                                            <a class="btn1 btn-info" href="../Product/list_product.php">Products</a>
                                         </div>								
                                     </td>
                                 </tr>

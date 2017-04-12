@@ -30,8 +30,8 @@
                                 <a href="javascript:void(0)">Menu</a></div>
                             <div id="topMenu">
                                 <ul>
-                                    <li><a href="index.php">Categories</a></li>
-                                    <li><a href="blog_index.html">Products</a></li>
+                                    <li><a href="../Category/index.php">Categories</a></li>
+                                    <li><a href="../Product/list_product.php">Products</a></li>
                                 </ul>
                             </div>
                         </div>

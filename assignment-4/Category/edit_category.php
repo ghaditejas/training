@@ -41,7 +41,7 @@ if ($page_load) {
 <?php include '../Includes/header.php'; ?>
     <div class="section banner_section who_we_help">
         <div class="container">
-            <h4><?php echo "EDIT ".$edit_name." CATEGORY";?></h4>
+            <h4>EDIT CATEGORY</h4>
         </div>
     </div>
     <div class="section content_section">
@@ -53,14 +53,15 @@ if ($page_load) {
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Edit Category Name</label>
-                                    <input name="edit_category_name" type="text"> 
+                                    <input name="edit_category_name" type="text" value="<?php echo $edit_name;?>"> 
                                 </div>
                                 <span><?php echo $error; ?>
                             </li>
                         </ul>
                         <div class="next_btn_block">
                             <div class="next_btn">
-                                <center><input type="submit"value="Submit"><img src="../images/small_triangle.png" alt="small_triangle"></center>
+                                <input type="submit" class="btn-success" value="Submit"><img src="../images/small_triangle.png" alt="small_triangle">
+                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px" onclick="javascript:window.location='index.php';"><img src="../images/small_triangle.png" alt="small_triangle">
                             </div>
                         </div>
                     </form>
