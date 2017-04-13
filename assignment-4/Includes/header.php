@@ -1,8 +1,8 @@
 <!DOCTTYPE html>
 <?php
-//error_reporting(E_ALL);
-//ini_set("display_errors", "1");
-//?>
+error_reporting(E_ALL);
+ini_set("display_errors", "1");
+?>
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
