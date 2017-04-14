@@ -7,6 +7,11 @@ $target_dir = '../upload/';
 $pageload = true;
 include '../Includes/db_config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(!file_exists('../upload')){
+    $oldumask = umask(0);
+    mkdir('../checkupload', 0777, true);
+    umask($oldumask); 
+    }
     if (empty($_POST['product_name'])) {
         $error_name = "This is required";
     } else if (preg_match('/[\!@#$%&*()~]/', $_POST['category_name'])) {

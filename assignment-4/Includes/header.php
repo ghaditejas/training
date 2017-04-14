@@ -16,13 +16,13 @@ ini_set("display_errors", "1");
             <header class="clearfix">
                 <div class="container">
                     <div class="Logo_Cont left col-md-6">
-                        <a href="index.html"><img src="../images/logo.png" alt=""></a>
+                        <a href="../Category/index.php"><img src="../images/logo.png" alt=""></a>
                     </div>
                     <div class="Home_Cont_Right right col-md-6">
                         <div class="Home_Cont_Right_Top left">
-                            <div class="Top_Search1 left">Call Us Today! (02) 9017 8413</div>
+                            <div class="Top_Search1 left" style="text-align:right">Call Us Today! (02) 9017 8413</div>
                             <div class="Top_Search2 right">
-                                <input id="tags1" name="" onclick="this.value = '';" onblur="validate_field('phone');" value="Type desired Job Location" type="text">
+                                <input id="tags1" name="" onclick="this.value = '';" onblur="validate_field('phone');" value="Type desired Job Location" type="text" style="float:right">
                             </div>
                         </div>
                         <div class="Home_Cont_Right_Bottom left">

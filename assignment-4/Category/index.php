@@ -1,4 +1,11 @@
 <?php
+$i=0;
+$offset=0;
+$limit=2;
+if(isset($_GET['offset']))
+{
+    $offset=$_GET['offset']*$limit;
+}
 include '../Includes/db_config.php';
 include '../Includes/header.php';
 ?>
@@ -31,7 +38,7 @@ include '../Includes/header.php';
                     </thead>
                     <tbody>                    
                         <?php
-                        $sqlquery = "SELECT id,name From assign_category where status = 1";
+                        $sqlquery = "SELECT id,name From assign_category where status = 1 LIMIT ".$limit." OFFSET ".$offset;
                         $result = $conn->query($sqlquery);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
@@ -51,7 +58,7 @@ include '../Includes/header.php';
                                 </tr>
                                 <?php
                             }
-                          }mysqli_close($conn);
+                          }
                         ?>
 
                     </tbody>
@@ -60,12 +67,19 @@ include '../Includes/header.php';
             </div>
             <div class="pagination">
                 <ul>
-                    <li><a href="#">first</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Last</a></li>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
+                    <?php 
+                    $sql= "SELECT count(*) as count from assign_category";
+                    $result = $conn->query($sql);
+                    $row= $result->fetch_assoc();
+                    $total_entry= $row['count'];
+                    do{
+                    ?>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".$i ?>"><?php echo $i+1;?></a>
+                    <?php $i++; 
+                    } while($i<$total_entry/$limit);
+                    mysqli_close($conn);?>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".--$i ?>">last</a></li>
                 </ul>
             </div>
         </div>

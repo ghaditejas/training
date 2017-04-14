@@ -1,5 +1,12 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+$i=0;
+$offset=0;
+$limit=2;
+if(isset($_GET['offset']))
+{
+    $offset=$_GET['offset']*$limit;
+}
+if (isset($_GET['category_id'])) {
     $id = $_GET['category_id'];
 }
 include '../Includes/db_config.php';
@@ -35,20 +42,19 @@ include '../Includes/header.php';
                     </thead>
                     <tbody>
                         <?php
-                        if(empty($id)){
-                        $sqlquery = "SELECT assign_product.id AS prod_id,assign_product.name,assign_product.image,  
+                        if (empty($id)) {
+                            $sqlquery = "SELECT assign_product.id AS prod_id,assign_product.name,assign_product.image,  
                                      assign_product.price,assign_category.name AS cat_name 
                                      FROM   assign_category  
                                      LEFT JOIN assign_product  
-                                     ON assign_category.id = assign_product.category WHERE assign_product.status = 1";
-                        }
-                        else{
-                        $sqlquery="SELECT assign_product.id AS prod_id,assign_product.name,assign_product.image,  
+                                     ON assign_category.id = assign_product.category WHERE assign_product.status = 1 LIMIT ".$limit." OFFSET ".$offset;
+                        } else {
+                            $sqlquery = "SELECT assign_product.id AS prod_id,assign_product.name,assign_product.image,  
                                      assign_product.price,assign_category.name AS cat_name 
                                      FROM   assign_category  
                                      LEFT JOIN assign_product  
                                      ON assign_category.id = assign_product.category where 
-                                     assign_product.category='".$id."' AND assign_product.status = 1";    
+                                     assign_product.category='" . $id . "' AND assign_product.status = 1 LIMIT ".$limit." OFFSET ".$offset;
                         }
                         $result = $conn->query($sqlquery);
                         if ($result->num_rows > 0) {
@@ -56,41 +62,60 @@ include '../Includes/header.php';
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" class="checkbox checkbox_check" id="<?php echo $row['prod_id'];?>" value="<?php echo $row['prod_id'];?>"> <label class="css-label mandatory_checkbox_fildes" for="<?php echo $row['prod_id']?>"></label>
+                                        <input type="checkbox" class="checkbox checkbox_check" id="<?php echo $row['prod_id']; ?>" value="<?php echo $row['prod_id']; ?>"> <label class="css-label mandatory_checkbox_fildes" for="<?php echo $row['prod_id'] ?>"></label>
                                     </td>
                                     <td><?php echo $row['name'] ?></td>
-                                    <td style="text-align:center"><img src="../upload/<?php echo $row['image']?>" style="width:80px; height:auto;" alt="Image NOT Available"></td>
-                                    <td style="text-align:right"><?php echo $row['price']?></td>
-                                    <td><?php echo $row['cat_name']?></td>
+                                    <td style="text-align:center">
+                                        <?php if (!empty($row['image'])) { ?>
+                                            <?php if (!file_exists('../upload/' . $row['image'])) { ?>
+                                                <img src="../images/default-image.jpg" style="width:80px; height:auto;" alt="Image NOT Available">
+                                            <?php } else { ?>
+                                                <img src="../upload/<?php echo $row['image'] ?>" style="width:80px; height:auto;" alt="Image NOT Available">
+                                            <?php }
+                                        } else { ?>    
+                                            <img src="../images/default-image.jpg" style="width:80px; height:auto;" alt="Image NOT Available"><?php } ?></td>
+                                    <td style="text-align:right"><?php echo $row['price'] ?></td>
+                                    <td><?php echo $row['cat_name'] ?></td>
                                     <td>
                                         <div class="buttons">
                                             <button class="btn btn_edit" onclick="del_func()">Delete</button>
-                                            <a  class="btn btn_delete" href="edit_product.php">">Edit</a>
+                                            <a  class="btn btn_delete" href="edit_product.php?<?php echo "product_id=" . $row['prod_id'] . "" ?>">">Edit</a>
                                         </div>								
                                     </td>
                                 </tr>
-                             <?php
+                                <?php
                             }
-                          }mysqli_close($conn);
+                        }
                         ?>
-                            </tbody>
-                        </table>
-                    </div>
+                    </tbody>
+                </table>
+            </div>
 
-                    <div class="pagination_listing">
-                        <ul>
-                            <li><a href="#">first</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">Last</a></li>
-                        </ul>
-                    </div>
+            <div class="pagination_listing">
+                <ul>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
+                    <?php 
+                    if (empty($id)){
+                    $sql= "SELECT count(*) as count from assign_product";
+                    }else{
+                        $sql= "SELECT count(*) as count from assign_product where category=".$id;
+                    }
+                    $result = $conn->query($sql);
+                    $row= $result->fetch_assoc();
+                    $total_entry= $row['count'];
+                    do{
+                    ?>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".$i ?>"><?php echo $i+1;?></a>
+                    <?php $i++; 
+                    } while($i<$total_entry/$limit);
+                        mysqli_close($conn);?>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".--$i ?>">last</a></li>
+                </ul>
+            </div>
 
-                </div>
-            </div>		
         </div>
+    </div>		
+</div>
 <script type="text/javascript">
     function del_func() {
         var arr = [];
