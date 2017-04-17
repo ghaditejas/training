@@ -9,8 +9,8 @@ if(isset($_GET['offset']))
 if (isset($_GET['category_id'])) {
     $id = $_GET['category_id'];
 }
-include '../Includes/db_config.php';
-include '../Includes/header.php';
+include '../Includes/db_config.php';//Includes database Configuration php file
+include '../Includes/header.php';//Includes Header html file
 ?>
 <div class="section banner_section who_we_help">
     <div class="container">
@@ -42,6 +42,9 @@ include '../Includes/header.php';
                     </thead>
                     <tbody>
                         <?php
+                        /*
+                         * Displays the list of product as per the given category Id's after applying limit and offset on it 
+                         */
                         if (empty($id)) {
                             $sqlquery = "SELECT assign_product.id AS prod_id,assign_product.name,assign_product.image,  
                                      assign_product.price,assign_category.name AS cat_name 
@@ -95,6 +98,9 @@ include '../Includes/header.php';
                 <ul>
                     <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
                     <?php 
+                    /*
+                     * Pagination is implemented using 'count' query
+                     */
                     if (empty($id)){
                     $sql= "SELECT count(*) as count from assign_product";
                     }else{

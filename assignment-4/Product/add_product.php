@@ -1,4 +1,7 @@
 <?php
+/*
+ * Adds the product in database by firing query on database also creates a folder to store uploaded files
+ */
 $error_name = '';
 $error_price = '';
 $error_select = '';
@@ -119,9 +122,9 @@ if ($pageload) {
     <script src="../js/additional-methods.min.js" type="text/javascript"></script> 
     <script src="../js/custom_validation.js" type="text/javascript"></script>
     <script type="text/javascript">
-    /*
-     * Validates the Catergory field , if proper sumbits the  form
-     */
+     /*
+      * Validates the product name field ,price,category field and uploaded file extension then sumbits the  form if it is proper
+      */
     $(document).ready(function () {
     <?php if (!empty($success)) { ?>
             alert('<?php echo $success; ?>');

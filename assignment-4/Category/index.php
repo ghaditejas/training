@@ -6,8 +6,8 @@ if(isset($_GET['offset']))
 {
     $offset=$_GET['offset']*$limit;
 }
-include '../Includes/db_config.php';
-include '../Includes/header.php';
+include '../Includes/db_config.php';//Includes database Configuration php file
+include '../Includes/header.php';//Includes Header html file
 ?>
 <div class="section banner_section who_we_help">
     <div class="container">
@@ -38,6 +38,9 @@ include '../Includes/header.php';
                     </thead>
                     <tbody>                    
                         <?php
+                        /*
+                         * Displays the list of categeory after applying limit and offset 
+                         */
                         $sqlquery = "SELECT id,name From assign_category where status = 1 LIMIT ".$limit." OFFSET ".$offset;
                         $result = $conn->query($sqlquery);
                         if ($result->num_rows > 0) {
@@ -68,7 +71,10 @@ include '../Includes/header.php';
             <div class="pagination">
                 <ul>
                     <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
-                    <?php 
+                    <?php
+                    /*
+                     * Pagination is implemented using 'count' query
+                     */
                     $sql= "SELECT count(*) as count from assign_category";
                     $result = $conn->query($sql);
                     $row= $result->fetch_assoc();

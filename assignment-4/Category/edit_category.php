@@ -1,6 +1,6 @@
 <?php
 /*
- * Adds the category to database  by using the id obtained and firing query on database
+ * Edit the specified category in database  by using the id obtained and firing query on database
  */
 $error = '';
 $success = '';

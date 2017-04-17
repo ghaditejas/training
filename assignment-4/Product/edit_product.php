@@ -1,4 +1,7 @@
 <?php
+/*
+ * Edit the specified product in database  by using the id obtained and firing query on database
+ */
 $error_name = '';
 $error_price = '';
 $error_select = '';
@@ -47,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 if ($pageload) {
+    /*
+     * Gets the product name ,price ,category,an image if uploaded of teh product that is to be edited
+     */
     $sqlvalues = "SELECT assign_product.name,assign_product.image,  
                assign_product.price,assign_category.name AS cat_name ,assign_product.category as cat_id
                FROM   assign_category  
@@ -142,7 +148,7 @@ if ($pageload) {
     <script src="../js/custom_validation.js" type="text/javascript"></script>
     <script type="text/javascript">
                                     /*
-                                     * Validates the Catergory field , if proper sumbits the  form
+                                     * Validates the product name field ,price,category field and uploaded file extension then sumbits the  form if it is proper
                                      */
                                     $(document).ready(function () {
     <?php if (!empty($success)) { ?>

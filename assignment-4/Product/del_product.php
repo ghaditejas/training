@@ -1,4 +1,7 @@
 <?php
+/*
+ * Deletes the checked products by setting status=0 
+ */
 if (isset($_POST['category_id'])) {
     
 include '../Includes/db_config.php';
