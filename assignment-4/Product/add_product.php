@@ -63,27 +63,27 @@ if ($pageload) {
         <div class="container">
             <div class="filable_form_container">
                 <div class="form_container_block">
-                    <form id="add_product" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                    <form id="add_product" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" class="cmxform">
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Product Name</label>
                                     <input name="product_name" type="text"> 
-                                    <span><?php echo $error_name; ?></span>
+                                    <label clas="error"><?php echo $error_name; ?></label>
                                 </div>
                             </li>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Product Price</label>
                                     <input name="price" type="text"> 
-                                    <span><?php echo $error_price; ?></span>
+                                    <label class="error"><?php echo $error_price; ?></label>
                                 </div>
                             </li>
                             <li class="fileds">
                                 <div class="upload_fileds">
                                     <label>Upload Image</label>
                                     <input name="upload" id="uploadFile" type="file" placeholder="Choose File">
-                                    <span><?php echo $error_ext; ?></span>
+                                    <label class="error"><?php echo $error_ext; ?></label>
                                 </div>						
                             </li>
                             <li class="fileds">
@@ -103,7 +103,7 @@ if ($pageload) {
                                         mysqli_close($conn);
                                         ?>
                                     </select>
-                                    <span><?php echo $error_select; ?></span>
+                                    <label class="error"><?php echo $error_select; ?></label>
                                 </div>
                             </li>
                         </ul>

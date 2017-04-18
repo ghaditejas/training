@@ -94,7 +94,7 @@ include '../Includes/header.php';//Includes Header html file
                 </table>
             </div>
 
-            <div class="pagination_listing">
+            <div class="pagination">
                 <ul>
                     <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
                     <?php 
@@ -102,19 +102,19 @@ include '../Includes/header.php';//Includes Header html file
                      * Pagination is implemented using 'count' query
                      */
                     if (empty($id)){
-                    $sql= "SELECT count(*) as count from assign_product";
+                    $sql= "SELECT count(*) as count from assign_product where status=1";
                     }else{
-                        $sql= "SELECT count(*) as count from assign_product where category=".$id;
+                        $sql= "SELECT count(*) as count from assign_product where category=".$id."AND status=1";
                     }
                     $result = $conn->query($sql);
                     $row= $result->fetch_assoc();
                     $total_entry= $row['count'];
                     do{
                     ?>
-                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".$i ?>"><?php echo $i+1;?></a>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".$i ?>"<?php if(($i*$limit)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
                     <?php $i++; 
                     } while($i<$total_entry/$limit);
-                        mysqli_close($conn);?>
+                    mysqli_close($conn);?>
                     <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".--$i ?>">last</a></li>
                 </ul>
             </div>

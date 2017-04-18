@@ -39,14 +39,14 @@ if ($page_load) {
         <div class="container">
             <div class="filable_form_container">
                 <div class="form_container_block">
-                    <form id="add_category" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form id="add_category" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="cmxform">
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Category Name</label>
                                     <input name="category_name" type="text"> 
                                 </div>
-                                <span><?php echo $error; ?>
+                                <label class="error"><?php echo $error; ?><label>
                             </li>
                         </ul>
                         <div class="next_btn_block">

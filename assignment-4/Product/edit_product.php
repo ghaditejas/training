@@ -80,29 +80,29 @@ if ($pageload) {
         <div class="container">
             <div class="filable_form_container">
                 <div class="form_container_block">
-                    <form id="add_product" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?product_id=" . $product_id ?>" method="post" enctype="multipart/form-data">
+                    <form id="add_product" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?product_id=" . $product_id ?>" method="post" enctype="multipart/form-data" class="cmxform">
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Product Name</label>
                                     <input name="product_name" type="text" value="<?php echo $product_name; ?>"> 
-                                    <span><?php echo $error_name; ?></span>
+                                    <label class="error"><?php echo $error_name; ?></label>
                                 </div>
                             </li>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Product Price</label>
                                     <input name="price" type="text" value = "<?php echo $product_price; ?>"> 
-                                    <span><?php echo $error_price; ?></span>
+                                    <label class="error"><?php echo $error_price; ?></label>
                                 </div>
                             </li>
                             <li class="fileds">
                                 <div class="upload_fileds">
                                     <label>Upload Image</label>
                                     <input name="upload" id="uploadFile" type="file">
-                                    <?php if (!empty($product_image)) { ?>
+                                    <?php if (!empty($product_image)&&file_exists('../upload/' . $row['image'])) { ?>
                                         <img src="../upload/<?php echo $product_image; ?>" style="width:80px; height:auto;" alt="Image NOT Available"><?php } ?>
-                                    <span><?php echo $error_ext; ?></span>
+                                    <label class="error"><?php echo $error_ext; ?></label>
                                 </div>						
                             </li>
                             <li class="fileds">
@@ -128,7 +128,7 @@ if ($pageload) {
                                         mysqli_close($conn);
                                         ?>
                                     </select>
-                                    <span><?php echo $error_select; ?></span>
+                                    <label class="error"><?php echo $error_select; ?></label>
                                 </div>
                             </li>
                         </ul>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['edit_category_name'];
         $sqlquery = "UPDATE assign_category SET name='" . $name . "' where id='".$id."'";
         if ($conn->query($sqlquery)) {
-            echo $success = 'Category Edited Succesfully';
+             $success = 'Category Edited Succesfully';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error();
         }
@@ -48,14 +48,14 @@ if ($page_load) {
         <div class="container">
             <div class="filable_form_container">
                 <div class="form_container_block">
-                    <form id="add_category" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?category_id=".$id); ?>" method="post">
+                    <form id="add_category" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?category_id=".$id); ?>" method="post" class="cmxform">
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Edit Category Name</label>
-                                    <input name="edit_category_name" type="text" value="<?php echo $edit_name;?>"> 
+                                    <input name="edit_category_name" type="text" value="<?php echo $edit_name?>"> 
                                 </div>
-                                <span><?php echo $error; ?>
+                                <label class="error"><?php echo $error; ?><label>
                             </li>
                         </ul>
                         <div class="next_btn_block">
