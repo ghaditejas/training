@@ -2,9 +2,10 @@
 $i=0;
 $offset=0;
 $limit=2;
-if(isset($_GET['offset']))
+if(isset($_GET['page']))
 {
-    $offset=$_GET['offset']*$limit;
+    
+    $offset=($_GET['page']-1)*$limit;
 }
 include '../Includes/db_config.php';//Includes database Configuration php file
 include '../Includes/header.php';//Includes Header html file
@@ -70,7 +71,7 @@ include '../Includes/header.php';//Includes Header html file
             </div>
             <div class="pagination">
                 <ul>
-                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=0" ?>">first</a></li>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=1" ?>">first</a></li>
                     <?php
                     /*
                      * Pagination is implemented using 'count' query
@@ -81,11 +82,11 @@ include '../Includes/header.php';//Includes Header html file
                     $total_entry= $row['count'];
                     do{
                     ?>
-                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".$i ?>"<?php if(($i*$limit)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".($i+1); ?>"<?php if(($i*$limit)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
                     <?php $i++; 
                     } while($i<$total_entry/$limit);
                     mysqli_close($conn);?>
-                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?offset=".--$i ?>">last</a></li>
+                    <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".$i ?>">last</a></li>
                 </ul>
             </div>
         </div>

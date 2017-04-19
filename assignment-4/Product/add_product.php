@@ -82,14 +82,14 @@ if ($pageload) {
                             <li class="fileds">
                                 <div class="upload_fileds">
                                     <label>Upload Image</label>
-                                    <input name="upload" id="uploadFile" type="file" placeholder="Choose File">
+                                    <input name="upload" id="uploadFile" type="file" placeholder="Choose File" style="width:380px">
                                     <label class="error"><?php echo $error_ext; ?></label>
                                 </div>						
                             </li>
                             <li class="fileds">
                                 <div class="name_fileds">
                                     <label>Select Category</label>
-                                    <select name="category" class="category required" style="z-index: 10; opacity: 1;">
+                                    <select name="category" class="category custom_dropdown required">
                                         <option value="">Select Category</option>
                                         <?php
                                         $sqlquery = "SELECT name,id From assign_category";
@@ -110,7 +110,7 @@ if ($pageload) {
                         <div class="next_btn_block">
                             <div class="next_btn">
                                 <input type="submit"value="Submit" class="btn-success"><img src="../images/small_triangle.png" alt="small_triangle">
-                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px" onclick="javascript:window.location = 'list_product.php';"><img src="../images/small_triangle.png" alt="small_triangle">
+                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px;border:0px" onclick="javascript:window.location = 'list_product.php';"><img src="../images/small_triangle.png" alt="small_triangle">
                             </div>
                         </div>
                     </form>

@@ -52,7 +52,7 @@ if ($page_load) {
                         <div class="next_btn_block">
                             <div class="next_btn">
                                 <input type="submit"value="Submit" class="btn-success"><img src="../images/small_triangle.png" alt="small_triangle">
-                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px" onclick="javascript:window.location='index.php';"><img src="../images/small_triangle.png" alt="small_triangle">
+                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px;border:0px" onclick="javascript:window.location='index.php';"><img src="../images/small_triangle.png" alt="small_triangle">
                             </div>
                         </div>
                     </form>

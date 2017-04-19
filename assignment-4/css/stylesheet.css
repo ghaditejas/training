@@ -598,7 +598,7 @@ span.select{position:absolute; background:#ffffff url('../images/drop-down.png')
 .form_container_block ul li .other_country_fileds{  vertical-align: top; display: inline-block; width:49%; position: relative;}
 .form_container_block ul li .other_country_fileds input[type="text"]{width: 380px;}
 .form_container_block ul li .upload_fileds{  vertical-align: top; display: inline-block; width:49%; position: relative;}
-.form_container_block ul li .upload_fileds input[type="file"]{width: 340px; padding: 10px;}
+.form_container_block ul li .upload_fileds input[type="file"]{width: 380px; padding: 10px;}
 .form_container_block ul li .upload_fileds .add_more{background: url(../images/plus24.png) 50% 50% no-repeat;   text-indent: -999px; display: inline-block; padding: 4px;}
 
 .form_container_block ul li .mandatory_fildes{  box-shadow: 0 1px 0 #F32323 inset, 0 -1px 0 #F32323 inset, 1px 0 0 #F32323 inset, -1px 0 0 #F32323 inset, 0 0 4px rgba(243, 35, 35, 0.5)}
@@ -798,3 +798,4 @@ ul.bxslider1 .image_block img{ border: medium none; border-radius: 0; display: i
 .select_id{width: 325px;background-image: url(images/icon1.png);background-repeat: no-repeat;background-position:right;}
 .cmxform .error{color: red}
 .pagination .selected {color: #fff;background-color: rgb(159, 188, 53);border-color: rgb(159, 188, 53);}
+.custom_dropdown{z-index: 10; opacity: 1;width:380px;height:43px; background: url('../images/drop-down.png');background-repeat: no-repeat;background-position: 335px;padding:4px 15px}
