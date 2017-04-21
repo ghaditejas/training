@@ -32,7 +32,7 @@ ini_set("display_errors", "1");
                             <div id="topMenu">
                                 <ul>
                                     <li><a href="<?php echo base_url()?>">Categories</a></li>
-                                    <li><a href="../Product/list_product.php">Products</a></li>
+                                    <li><a href="<?php echo base_url()?>product/view">Products</a></li>
                                 </ul>
                             </div>
                         </div>

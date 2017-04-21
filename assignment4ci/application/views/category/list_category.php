@@ -38,7 +38,7 @@
                                         <div class="buttons">
                                             <button class="btn btn_edit" onclick="del_func()">Delete</button>
                                             <a  class="btn btn_delete" href="<?php echo base_url()?>category/edit/<?php echo $row['id'];?>">Edit</a>
-                                            <a class="btn1 btn-info" href="../Product/list_product.php?<?php //echo "category_id=" . $row['id']; ?>">Products</a>
+                                            <a class="btn1 btn-info" href="<?php echo base_url()?>product/view/<?php echo $row['id'];?>">Products</a>
                                         </div>								
                                     </td>
                                 </tr>

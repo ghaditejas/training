@@ -1,9 +1,7 @@
 /*
- * Validates the Catergory field , if proper sumbits the  form
+ * Validates the Catergory field and Prodouct fields, if proper sumbits the  form
  */
 $(document).ready(function () {
-//            (!empty($success)) 
-//            alert('<?php echo $success; ?>');
     $("#category").validate({
         rules: {
             category_name: {
@@ -14,6 +12,38 @@ $(document).ready(function () {
         messages: {
             category_name: {
                 required: 'This field is Required*'
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+    $("#add_product").validate({
+        rules: {
+            product_name: {
+                required: true,
+                pass1: true
+            },
+            price: {
+                required: true,
+                money: true
+            },
+            category: {
+                required: true
+            },
+            upload: {
+                accept: "image/jpeg, image/png"
+            }
+        },
+        messages: {
+            product_name: {
+                required: 'This field is Required*'
+            },
+            price: {
+                required: 'This field is Required*'
+            },
+            category: {
+                required: 'Please Select a Category*'
             }
         },
         submitHandler: function (form) {

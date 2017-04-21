@@ -11,8 +11,9 @@ class Category extends CI_Controller {
         $this->load->model('category_model');
     }
 
-    public function category_list() {
-        $res=$this->category_model->get_category();
+    public function category_list($offset=0) {
+        $limit=2;
+        $res=$this->category_model->get_category($offset,$limit);
         $data['list']=$res;
         $data['page_name']='category/list_category';
         $this->load->view('main_template',$data); 
@@ -20,7 +21,7 @@ class Category extends CI_Controller {
 
     public function add() {
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            $this->form_validation->set_rules('category_name', 'Category', 'required');
+            $this->form_validation->set_rules('category_name', 'Category', 'required|alpha_numeric_spaces');
             if ($this->form_validation->run() == TRUE) {
                 $data=array(
                     'name'=>$this->input->post('category_name'),
