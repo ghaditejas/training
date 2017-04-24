@@ -52,22 +52,21 @@
             </div>
             <div class="pagination">
                 <ul>
-                    <li><a href="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=1" ?>javascript:void(0)">first</a></li>
-                    <?php
-                    /*
-                     * Pagination is implemented using 'count' query
-                     */
-//                    $sql= "SELECT count(*) as count from assign_category where status=1";
-//                    $result = $conn->query($sql);
-//                    $row= $result->fetch_assoc();
-//                    $total_entry= $row['count'];
-//                    do{
-//                    ?>
-                    <li><a href="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".($i+1); ?>javascript:void(0)"<?php //(($i*$limit)==($offset)){echo 'class="selected"';}?>><?php //echo $i+1;?></a>
-                    <?php //$i++; 
-//                    } while($i<$total_entry/$limit);
-//                    mysqli_close($conn);?>    
-                    <li><a href="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".$i ?>javascript:void(0)">last</a></li>
+                    <li><a href="<?php echo base_url()?>category/category_list/1">first</a></li>
+                            <?php
+                            /*
+                             * Pagination is implemented using 'count' query
+                             */
+                            $i=0;
+                            while($i<$pages){
+                            ?>
+                            <li><a href="<?php echo base_url()."category/category_list/".($i+1); ?>"<?php if(($i*LIMIT)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
+                                <?php
+                         
+                        $i++;
+                            }
+                                ?>
+                            <li><a href="<?php echo base_url()."category/category_list/".$pages;?>">last</a></li>
                 </ul>
             </div>
         </div>

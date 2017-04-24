@@ -66,28 +66,30 @@
 
                     <div class="pagination">
                         <ul>
-                            <li><a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?page=1" ?>">first</a></li>
+                            <li><a href="<?php echo base_url()?>/product/view/<?php echo $category; ?>/1">first</a></li>
                             <?php
                             /*
                              * Pagination is implemented using 'count' query
                              */
-//                    if (empty($id)){
-//                    $sql= "SELECT count(*) as count from assign_product where status=1";
-//                    }else{
-//                        $sql= "SELECT count(*) as count from assign_product where category=".$id."AND status=1";
-//                    }
-//                    $result = $conn->query($sql);
-//                    $row= $result->fetch_assoc();
-//                    $total_entry= $row['count'];
-//                    do{
+                            $i=0;
+                            while($i<$pages){
+                                $selected= false;
+                                if(($i*LIMIT)==($offset)){
+                                    $selected = true;
+                                }
+                                if(!$selected){
+                                    $_url =  base_url()."product/view/".$category."/".($i+1); 
+                                }else{
+                                    $_url="javascript:void(0)";
+                                }
                             ?>
-                            <li><a href="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".($i+1) ?>"<?php //if(($i*$limit)==($offset)){echo 'class="selected"';}?>><?php //echo $i+1;?></a>
+                            <li><a href="<?php echo $_url; ?>" <?php if($selected){echo 'class="selected"';}?>><?php echo $i+1;?></a>
                                 <?php
-                                //$i++; 
-//                    } while($i<$total_entry/$limit);
-//                    mysqli_close($conn);
+                         
+                        $i++;
+                            }
                                 ?>
-                            <li><a href="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])."?page=".$i  ?>">last</a></li>
+                            <li><a href="<?php echo base_url()."/product/view/".$category."/".$pages;?>">last</a></li>
                         </ul>
                     </div>
 

@@ -1,7 +1,19 @@
 <?php
-
+/**
+ * Classname: Category
+ * Functionname: category_list,add,edit,delete
+ * 
+ * @category category
+ * @package CI_Controller
+ * @author Tejas Ghadigaonkar
+ */
 class Category extends CI_Controller {
-
+    
+    /**
+     *@method __construct
+     *@desc loads library helpers and model
+     *@author Tejas Ghadigaonkar 
+     */
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -10,15 +22,29 @@ class Category extends CI_Controller {
         $this->load->helper('form');
         $this->load->model('category_model');
     }
-
-    public function category_list($offset=0) {
-        $limit=2;
-        $res=$this->category_model->get_category($offset,$limit);
+    
+    /**
+     *@method category_list 
+     *@desc lists the categories  by calling the view
+     *@param int $offset
+     */
+     public function category_list($offset=1) {
+        $offset=($offset-1)*LIMIT;
+        echo $offset;
+        $res=$this->category_model->get_category($offset);
         $data['list']=$res;
+        $data['offset']=$offset;
+        $table_name='category';
+        $data['pages']=$this->category_model->pagination($table_name);
         $data['page_name']='category/list_category';
         $this->load->view('main_template',$data); 
     }
 
+    /**
+     * @method add
+     * @desc adds category into th database
+     * @author Tejas Ghadigaonkar
+     */
     public function add() {
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $this->form_validation->set_rules('category_name', 'Category', 'required|alpha_numeric_spaces');
@@ -37,6 +63,11 @@ class Category extends CI_Controller {
         
     }
 
+    /**
+     *@method edit
+     *@desc edits the selected category by updating it in database
+     * @param int $id
+     */
     public function edit($id) {
         $res=$this->category_model->get_editcategory($id);
         $data['edit']=$res;
@@ -53,6 +84,11 @@ class Category extends CI_Controller {
         $this->load->view('main_template',$data);
     }
     
+    /**
+     * @method delete
+     * @desc deletes the category from database 
+     * @author Tejas Ghadigaonkar
+     */
     public function delete(){        
         $ids =$this->input->post('category_id');
         $del=$this->category_model->delete_cateory($ids);

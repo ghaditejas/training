@@ -1,7 +1,19 @@
 <?php
-
+/**
+ * Classname: Product
+ * Functionname: view,add,edit,money,delete
+ * 
+ * @category product
+ * @package CI_Controller
+ * @author Tejas Ghadigaonkar
+ */
 class Product extends CI_Controller {
 
+    /**
+     *@method __construct
+     *@desc loads library helpers and model
+     *@author Tejas Ghadigaonkar 
+     */
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -13,14 +25,32 @@ class Product extends CI_Controller {
         $this->load->model('product_model');
     }
 
-    public function view($id = "",$offset=0) {
-        $limit=2;
-        $res = $this->product_model->get_product($id,$offset,$limit);
+    /**
+     * @method view
+     * @desc list products in database according to its selected category
+     * @param int $id
+     * @param int $offset
+     * @author Tejas Ghadigaonkar
+     */
+    public function view($id = 0,$offset=1) {
+        $offset=($offset-1)*LIMIT;
+        $data['category']=$id;
+        $res = $this->product_model->get_product($id,$offset);
         $data['list'] = $res;
+        $data['offset']=$offset;
+        $table_name="product";
+        $data['pages']=$this->category_model->pagination($table_name,$id);
+        echo $data['pages'];
         $data['page_name'] = 'product/list_product';
         $this->load->view('main_template', $data);
     }
-
+    
+    /**
+     * @method add
+     * @desc adds the product in database
+     * @param int $id
+     * @author Tejas Ghadigaonkar
+     */
     public function add($id = "") {
         $data['upload_error'] = "";
         $file_name = "";
@@ -75,6 +105,12 @@ class Product extends CI_Controller {
         $this->load->view('main_template', $data);
     }
 
+    /**
+     * @method edit
+     * @desc edits the selected product and update it in database
+     * @param int $id
+     * @author Tejas Ghadigaonkar
+     */
     public function edit($id) {
         $result = $this->category_model->get_category();
         $data['cat'] = $result;
@@ -84,7 +120,13 @@ class Product extends CI_Controller {
         $data['page_name'] = 'product/edit_product';
         $this->load->view('main_template', $data);
     }
-
+    /**
+     * @method money
+     * @desc checks the regular expression
+     * @param string $num
+     * @return boolean
+     * @author Tejas Ghadigaonkar
+     */
     public function money($num) {
         if (preg_match('/^\d{0,9}(\.\d{0,2})?$/', $num)) {
             return TRUE;
@@ -92,7 +134,11 @@ class Product extends CI_Controller {
             return FALSE;
         }
     }
-
+    /**
+     * @method delete
+     * @desc deletes the category from database 
+     * @author Tejas Ghadigaonkar
+     */
     public function delete() {
         $ids = $this->input->post('product_id');
         $del = $this->product_model->delete_product($ids);
