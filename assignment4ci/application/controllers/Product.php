@@ -33,14 +33,23 @@ class Product extends CI_Controller {
      * @author Tejas Ghadigaonkar
      */
     public function view($id = 0,$offset=1) {
+        $search="";
         $offset=($offset-1)*LIMIT;
         $data['category']=$id;
-        $res = $this->product_model->get_product($id,$offset);
+        if($this->input->post('search')){
+            $search=$this->input->post('search');
+        }
+        $sort_by = $this->input->post('sort_by');
+        $sort_type = $this->input->post('sort_by_val');
+        
+        $data['sort_by'] = $sort_by;
+        $data['sort_type'] = $sort_type;
+        
+        $res = $this->product_model->get_product($id,$offset,$search,$sort_by,$sort_type);
         $data['list'] = $res;
         $data['offset']=$offset;
         $table_name="product";
-        $data['pages']=$this->category_model->pagination($table_name,$id);
-        echo $data['pages'];
+        $data['pages']=$this->category_model->pagination($table_name,$search,$id);
         $data['page_name'] = 'product/list_product';
         $this->load->view('main_template', $data);
     }

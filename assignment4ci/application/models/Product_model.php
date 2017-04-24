@@ -34,7 +34,7 @@ class Product_model extends CI_Model {
      * @param int $offset
      * @return array
      */
-    public function get_product($id=0,$offset){
+    public function get_product($id=0,$offset,$search,$sort_by = false,$sort_type='asc'){
         if($id){
             $this->db->select('product.id AS prod_id,product.name,product.image,product.price,category.name AS cat_name');
             $this->db->from('category');
@@ -47,7 +47,18 @@ class Product_model extends CI_Model {
             $this->db->join('product','category.id = product.category');
             $this->db->where('product.status',1);
         }
+        if($search!=""){
+            $this->db->like('product.name',$search);
+        }
         $this->db->limit(LIMIT, $offset);
+        if($sort_by){            
+            if($sort_type != 'asc'){
+                $sort_type = 'desc';
+            }
+            $this->db->order_by("product.".$sort_by,$sort_type);
+        }
+        
+        //$this->db->order_by("product.name","asc");
         $query=$this->db->get();
         return $query->result_array();
     }

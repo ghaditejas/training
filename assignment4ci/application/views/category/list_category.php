@@ -8,7 +8,11 @@
     <div class="container">
         <div class="filable_form_container">
             <div class="mange_buttons">
-                <ul>
+               <ul> 
+                   <li> <form  action="<?php echo base_url();?>" method="post">
+                    <li><input type="search" id="search" name="search"></li>
+                    <li><input type="submit" value="Search"></li>
+                       </form></li>
                     <li><a href="<?php echo base_url()?>category/add">Create Category</a></li>
                     <li><a href="javascript:del_func()" id="deletebatch">Delete</a></li>
                 </ul>
@@ -59,8 +63,17 @@
                              */
                             $i=0;
                             while($i<$pages){
+                                $selected= false;
+                                if(($i*LIMIT)==($offset)){
+                                    $selected = true;
+                                }
+                                if(!$selected){
+                                    $_url =  base_url()."category/category_list/".($i+1); 
+                                }else{
+                                    $_url="javascript:void(0)";
+                                }
                             ?>
-                            <li><a href="<?php echo base_url()."category/category_list/".($i+1); ?>"<?php if(($i*LIMIT)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
+                            <li><a href="<?php echo $_url; ?>"<?php if(($i*LIMIT)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
                                 <?php
                          
                         $i++;

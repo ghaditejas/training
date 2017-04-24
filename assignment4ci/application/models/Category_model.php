@@ -31,7 +31,10 @@ class Category_Model extends CI_Model {
      * @param int $offset
      * @return array
      */
-    public function get_category($offset) {
+    public function get_category($offset,$search) {
+        if($search!=""){
+        $this->db->like('name',$search);    
+        }
         $this->db->where('status', 1);
         $this->db->limit(LIMIT, $offset);
         $query = $this->db->get('category');
@@ -88,7 +91,10 @@ class Category_Model extends CI_Model {
      * @param int $id
      * @return int
      */
-    public function pagination($table_name, $id = 0) {
+    public function pagination($table_name,$search,$id = 0) {
+        if($search!=""){
+        $this->db->like('name',$search);    
+        }
         if ($id) {
             $this->db->where('category', $id);
             $this->db->where('status', 1);
@@ -104,6 +110,7 @@ class Category_Model extends CI_Model {
         } else {
             return(floor($count / LIMIT) + 1);
         }
+        
     }
 
 }

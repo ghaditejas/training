@@ -8,6 +8,10 @@
         <div class="filable_form_container">
             <div class="mange_buttons">
                 <ul>
+                   <li> <form  action="<?php echo base_url();?>product/view" method="post">
+                    <li><input type="search" id="search" name="search"></li>
+                    <li><input type="submit" value="Search"></li>
+                       </form></li>
                     <li><a href="<?php echo base_url(); ?>product/add">Create Product</a></li>
                     <li><a href="javascript:del_func()">Delete</a></li>
                 </ul>
@@ -19,9 +23,9 @@
                             <th width="10%">
                                 <input type="checkbox" class="checkbox uncheck" id="checkall"> <label class="css-label mandatory_checkbox_fildes" for="checkall"></label>
                             </th>
-                            <th style="">Product Name <!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
+                            <th style="" class="makesort <?php if($sort_by == 'name'){ echo $sort_type; }?>" data-name="name">Product Name <i class="fa fa-fw fa-sort"></i><!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
                             <th style="">Product Image</th>
-                            <th style="">Product Price</th>
+                            <th style="" class="makesort <?php if($sort_by == 'name'){ echo $sort_type; }?>" data-name="price">Product Price<i class="fa fa-fw fa-sort"></i></th>
                             <th style="">Product Category <!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
                             <th>Action</th>
                         </tr>
@@ -66,7 +70,7 @@
 
                     <div class="pagination">
                         <ul>
-                            <li><a href="<?php echo base_url()?>/product/view/<?php echo $category; ?>/1">first</a></li>
+                            <li><a href="<?php echo base_url()?>product/view/<?php echo $category; ?>/1">first</a></li>
                             <?php
                             /*
                              * Pagination is implemented using 'count' query
@@ -89,14 +93,30 @@
                         $i++;
                             }
                                 ?>
-                            <li><a href="<?php echo base_url()."/product/view/".$category."/".$pages;?>">last</a></li>
+                            <li><a href="<?php echo base_url()."product/view/".$category."/".$pages;?>">last</a></li>
                         </ul>
                     </div>
 
                 </div>
             </div>		
         </div>
+<form id="frm_filter" action="" style="display:none;" method="post">
+    <input id="sort_by" name="sort_by" type="hidden" value="<?php echo $sort_by; ?>" />
+    <input id="sort_type"  name="sort_type" type="hidden" value="<?php echo $sort_type; ?>" />
+</form>
         <script type="text/javascript">
+            $(document).ready(function (){
+                $('.makesort').click(function(){
+                    var sort_by = $(this).attr('data-name');
+                    var sort_type = 'asc'
+                    if($(this).hasClass('asc')){
+                        sort_by_val = 'desc';                        
+                    }
+                    $('#sort_by').val(sort_by);
+                    $('#sort_type').val(sort_type);
+                    $('#frm_filter').submit();
+                });
+            });
         <?php $success = $this->session->flashdata('success'); ?>
         <?php if (!empty($success)) {
             ?>

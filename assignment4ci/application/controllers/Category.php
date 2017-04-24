@@ -29,13 +29,16 @@ class Category extends CI_Controller {
      *@param int $offset
      */
      public function category_list($offset=1) {
+        $search="";
         $offset=($offset-1)*LIMIT;
-        echo $offset;
-        $res=$this->category_model->get_category($offset);
+        if($this->input->post('search')){
+            $search=$this->input->post('search');
+        }
+        $res=$this->category_model->get_category($offset,$search);
         $data['list']=$res;
         $data['offset']=$offset;
         $table_name='category';
-        $data['pages']=$this->category_model->pagination($table_name);
+        $data['pages']=$this->category_model->pagination($table_name,$search);
         $data['page_name']='category/list_category';
         $this->load->view('main_template',$data); 
     }
