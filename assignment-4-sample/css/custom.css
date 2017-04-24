@@ -1,0 +1,20 @@
+.error {
+    color: red !important;
+}
+
+.custom-help-block {
+    clear: both;
+}
+
+.message {
+    border: 1px solid grey;
+    display: none;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.pagination_listing ul li a.pagination_highlight {
+    background-color: #a8ce38;
+    border-color: #a8ce38;
+    color: #fff;
+}
