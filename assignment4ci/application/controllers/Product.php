@@ -29,18 +29,30 @@ class Product extends CI_Controller {
      * @method view
      * @desc list products in database according to its selected category
      * @param int $id
-     * @param int $offset
      * @author Tejas Ghadigaonkar
      */
-    public function view($id = 0,$offset=1) {
+    public function view($id=0) {
+        $offset=1;
         $search="";
+        
+        if($this->input->post('offset')){
+            $offset=$this->input->post('offset');            
+        }
+        $page = $offset;
         $offset=($offset-1)*LIMIT;
+        if($this->input->post('category_id')){
+            $id=$this->input->post('category_id');
+        }
         $data['category']=$id;
         if($this->input->post('search')){
             $search=$this->input->post('search');
         }
+        else if($this->input->post('search_saved')){
+            $search=$this->input->post('search_saved');
+        }
+        $data['search']=$search;
         $sort_by = $this->input->post('sort_by');
-        $sort_type = $this->input->post('sort_by_val');
+        $sort_type = $this->input->post('sort_type');
         
         $data['sort_by'] = $sort_by;
         $data['sort_type'] = $sort_type;
@@ -48,6 +60,7 @@ class Product extends CI_Controller {
         $res = $this->product_model->get_product($id,$offset,$search,$sort_by,$sort_type);
         $data['list'] = $res;
         $data['offset']=$offset;
+        $data['page_num']=$page;
         $table_name="product";
         $data['pages']=$this->category_model->pagination($table_name,$search,$id);
         $data['page_name'] = 'product/list_product';

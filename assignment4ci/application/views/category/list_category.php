@@ -10,9 +10,10 @@
             <div class="mange_buttons">
                <ul> 
                    <li> <form  action="<?php echo base_url();?>" method="post">
-                    <li><input type="search" id="search" name="search"></li>
-                    <li><input type="submit" value="Search"></li>
-                       </form></li>
+                    <li><input type="search" id="search" name="search" value="<?php echo $search;?>"></li>
+                    <li><input class="btn btn-primary" type="submit" value="Search"></li>
+                    <li><input class="btn btn-danger" type="button" onclick="location.href='<?php echo base_url();?>'" value="Reset"></li>
+                    </form></li>
                     <li><a href="<?php echo base_url()?>category/add">Create Category</a></li>
                     <li><a href="javascript:del_func()" id="deletebatch">Delete</a></li>
                 </ul>
@@ -56,7 +57,7 @@
             </div>
             <div class="pagination">
                 <ul>
-                    <li><a href="<?php echo base_url()?>category/category_list/1">first</a></li>
+                    <li><a class="page" href="javascript:void(0)" offset="1">first</a></li>
                             <?php
                             /*
                              * Pagination is implemented using 'count' query
@@ -68,24 +69,35 @@
                                     $selected = true;
                                 }
                                 if(!$selected){
-                                    $_url =  base_url()."category/category_list/".($i+1); 
+                                    $_url =  base_url()."product/view/".($i+1); 
                                 }else{
                                     $_url="javascript:void(0)";
                                 }
                             ?>
-                            <li><a href="<?php echo $_url; ?>"<?php if(($i*LIMIT)==($offset)){echo 'class="selected"';}?>><?php echo $i+1;?></a>
+                            <li><a class="page <?php if($selected){echo "selected";}?>" href="javascript:void(0)" offset="<?php  echo ($i+1);?>"><?php echo $i+1;?></a></li>
                                 <?php
                          
                         $i++;
                             }
                                 ?>
-                            <li><a href="<?php echo base_url()."category/category_list/".$pages;?>">last</a></li>
+                            <li><a  class="page" href="javascript:void(0)"offset="<?phpecho $pages;?>">last</a></li>
                 </ul>
             </div>
         </div>
     </div>		
 </div>
+<form id="frm_page" action="" style="display:none;" method="post">
+    <input id="offset" name="offset" type="hidden" value="" /> 
+    <input id="search"  name="search_saved" type="hidden" value="<?php echo $search;?>" />
+</form>
 <script type="text/javascript">
+    $(document).ready(function (){
+                    $('.page').click(function(){
+                   var offset=$(this).attr('offset');
+                    $('#offset').val(offset);
+                    $('#frm_page').submit();
+                });
+            });
     <?php $success= $this->session->flashdata('success');?>
     <?php if(!empty($success)){
         ?>

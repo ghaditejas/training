@@ -30,10 +30,17 @@ class Category extends CI_Controller {
      */
      public function category_list($offset=1) {
         $search="";
+        if($this->input->post('offset')){
+            $offset=$this->input->post('offset');
+        }
         $offset=($offset-1)*LIMIT;
         if($this->input->post('search')){
             $search=$this->input->post('search');
         }
+        else if($this->input->post('search_saved')){
+            $search=$this->input->post('search_saved');
+        }
+        $data['search']=$search;
         $res=$this->category_model->get_category($offset,$search);
         $data['list']=$res;
         $data['offset']=$offset;
