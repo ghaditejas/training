@@ -28,13 +28,13 @@
                             if ($sort_by == 'name') {
                                 echo $sort_type;
                             }
-                            ?>" data-name="name">Product Name <i class="fa fa-fw fa-sort"></i><!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
+                            ?>"data-name="name"><span style="cursor:pointer">Product Name </span><i class="fa fa-fw fa-sort"></i><!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
                             <th style="">Product Image</th>
                             <th style="" class="makesort <?php
                             if ($sort_by == 'price') {
                                 echo $sort_type;
                             }
-                            ?>" data-name="price">Product Price<i class="fa fa-fw fa-sort"></i></th>
+                            ?>"data-name="price"><span style="cursor:pointer">Product Price</span><i class="fa fa-fw fa-sort"></i></th>
                             <th style="">Product Category <!--<a href="#" class="sort_icon"><img src="images/sort.png"></a>--></th>
                             <th>Action</th>
                         </tr>
