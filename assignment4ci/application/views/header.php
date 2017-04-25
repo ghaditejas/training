@@ -24,13 +24,13 @@ ini_set("display_errors", "1");
                         <div class="Home_Cont_Right_Top left">
                             <div class="Top_Search1 left" style="text-align:"center">Call Us Today! (02) 9017 8413</div>
                             <div class="right">
-                                <input id="tags1" name="" value="Type desired Job Location" type="text" style="float:right">
+                                <input id="tags1" name="" value="Type desired Job Location" type="text" style="float:right;margin-right:20px">
                             </div>
                         </div>
                         <div class="Home_Cont_Right_Bottom left">
                             <div class="toggle_menu">
                                 <a href="javascript:void(0)">Menu</a></div>
-                            <div id="topMenu">
+                            <div id="topMenu" style="margin-right: 20px">
                                 <ul>
                                     <li><a href="<?php echo base_url()?>">Categories</a></li>
                                     <li><a href="<?php echo base_url()?>product/view">Products</a></li>

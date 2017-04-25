@@ -76,7 +76,7 @@ class Product extends CI_Controller {
     public function add($id = "") {
         $data['upload_error'] = "";
         $file_name = "";
-        $res = $this->category_model->get_category();
+        $res = $this->category_model->get_categorylist();
         $data['list'] = $res;
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $this->form_validation->set_rules('product_name', 'Product Name', 'required|alpha_numeric_spaces');
@@ -134,7 +134,7 @@ class Product extends CI_Controller {
      * @author Tejas Ghadigaonkar
      */
     public function edit($id) {
-        $result = $this->category_model->get_category();
+        $result = $this->category_model->get_categorylist();
         $data['cat'] = $result;
         $res = $this->product_model->edit_getproduct($id);
         $data['list'] = $res;

@@ -9,7 +9,7 @@
             <div class="mange_buttons">
                 <ul>
                     <li> <form  action="<?php echo base_url(); ?>product/view" method="post">
-                            <li><input class="search_value" type="search" id="search" name="search" value="<?php echo $search;?>"></li>
+                            <li><input class="search_value" type="search" id="search" name="search" value="<?php echo $search;?>" placeholder="SEARCH"></li>
                             <li><input class="btn btn-primary"type="submit" value="Search"></li>
                             <li><input class="btn btn-danger" type="button" onclick="location.href='<?php echo base_url();?>product/view'" value="Reset"></li>
                         </form></li>
