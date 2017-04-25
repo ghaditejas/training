@@ -31,12 +31,15 @@ class Category_Model extends CI_Model {
      * @param int $offset
      * @return array
      */
-    public function get_category($offset,$search) {
+    public function get_category($offset="",$search="") {
         if($search!=""){
         $this->db->like('name',$search);    
         }
         $this->db->where('status', 1);
+        if($offset!=""){
         $this->db->limit(LIMIT, $offset);
+        
+        }
         $query = $this->db->get('category');
         return $query->result_array();
     }
