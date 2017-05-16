@@ -104,9 +104,10 @@ include '../Includes/header.php';//Includes Header html file
                     if (empty($id)){
                     $sql= "SELECT count(*) as count from assign_product where status=1";
                     }else{
-                        $sql= "SELECT count(*) as count from assign_product where category=".$id."AND status=1";
+                        $sql= "SELECT count(*) as count from assign_product where category=".$id." AND status=1";
                     }
                     $result = $conn->query($sql);
+//                    print_r($result);
                     $row= $result->fetch_assoc();
                     $total_entry= $row['count'];
                     do{

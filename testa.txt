@@ -1,2 +1,0 @@
-Hello WElcome to .gitignore tutorial
-
