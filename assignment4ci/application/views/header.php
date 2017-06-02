@@ -1,8 +1,4 @@
 <!DOCTTYPE html>
-<?php
-error_reporting(E_ALL);
-ini_set("display_errors", "1");
-?>
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,7 +14,7 @@ ini_set("display_errors", "1");
             <header class="clearfix">
                 <div>
                     <div class="Logo_Cont left col-md-6">
-                        <a href="../Category/index.php"><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
+                        <a href="<?php echo base_url();?>"><img src="<?php echo base_url()?>assets/images/logo.png" alt=""></a>
                     </div>
                     <div class="Home_Cont_Right right col-md-6">
                         <div class="Home_Cont_Right_Top left">
