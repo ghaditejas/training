@@ -11,14 +11,14 @@
                     <ul>
                         <li class="fileds">
                             <div class="name_fileds">
-                                <label>Product Name</label>
+                                <label>Product Name*</label>
                                 <input name="product_name" type="text"> 
                                 <label class="error"><?php echo form_error('product_name'); ?></label>
                             </div>
                         </li>
                         <li class="fileds">
                             <div class="name_fileds">
-                                <label>Product Price</label>
+                                <label>Product Price*</label>
                                 <input name="price" type="text"> 
                                 <label class="error"><?php echo form_error('price'); ?></label>
                             </div>
@@ -38,7 +38,7 @@
                         </li>
                         <li class="fileds">
                             <div class="name_fileds">
-                                <label>Select Category</label>
+                                <label>Select Category*</label>
                                 <select name="category" class="category custom_dropdown required">
                                     <option value="">Select Category</option>
                                     <?php

@@ -11,7 +11,7 @@
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
-                                    <label>Category Name</label>
+                                    <label>Category Name*</label>
                                     <input name="category_name" type="text" value=""> 
                                 </div>
                                 <label class="error"><?php echo form_error('category_name'); ?><label>

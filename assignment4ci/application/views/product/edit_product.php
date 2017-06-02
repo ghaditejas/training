@@ -14,14 +14,14 @@
                         <ul>
                             <li class="fileds">
                                 <div class="name_fileds">
-                                    <label>Product Name</label>
+                                    <label>Product Name*</label>
                                     <input name="product_name" type="text" value="<?php echo $row['name'] ?>"> 
                                     <label class="error"><?php //echo $error_name;  ?></label>
                                 </div>
                             </li>
                             <li class="fileds">
                                 <div class="name_fileds">
-                                    <label>Product Price</label>
+                                    <label>Product Price*</label>
                                     <input name="price" type="text" value = "<?php echo $row['price'] ?>"> 
                                     <label class="error"><?php //echo $error_price;  ?></label>
                                 </div>
@@ -37,7 +37,7 @@
                             </li>
                             <li class="fileds">
                                 <div class="name_fileds">
-                                    <label>Select Category</label>
+                                    <label>Select Category*</label>
                                     <select name="category" class="category custom_dropdown required">
                                         <?php
                                         foreach ($cat as $row1) {

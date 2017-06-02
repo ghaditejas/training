@@ -15,7 +15,7 @@
                     <ul>
                         <li class="fileds">
                             <div class="name_fileds">
-                                <label>Edit Category Name</label>
+                                <label>Edit Category Name*</label>
                                 
                                 <input name="category_name" type="text" value="<?php echo $name;?>"> 
                             </div>
