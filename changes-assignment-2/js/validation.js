@@ -368,7 +368,8 @@ function compulsory()
    			
    		}
    		else 
-   		{
-   			return true;
+   		{   
+                        alert('Form Submitted Successfully');
+   			return false;
    		}
 }
