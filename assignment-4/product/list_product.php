@@ -9,8 +9,8 @@ if(isset($_GET['page']))
 if (isset($_GET['category_id'])) {
     $id = $_GET['category_id'];
 }
-include '../Includes/db_config.php';//Includes database Configuration php file
-include '../Includes/header.php';//Includes Header html file
+include '../includes/db_config.php';//Includes database Configuration php file
+include '../includes/header.php';//Includes Header html file
 ?>
 <div class="section banner_section who_we_help">
     <div class="container">
@@ -130,7 +130,7 @@ include '../Includes/header.php';//Includes Header html file
             arr.push($(this).val());
         });
         if (arr.length == 0) {
-            alert("Please check the category u want to delete");
+            alert("Please select the category you want to delete");
         } else {
             var r = confirm("Are you sure you want to delete");
             if (r)
@@ -167,4 +167,4 @@ include '../Includes/header.php';//Includes Header html file
         });
     });
 </script>
-<?php include '../Includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

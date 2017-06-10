@@ -163,7 +163,7 @@
             arr.push($(this).val());
         });
         if (arr.length == 0) {
-            alert("Please check the category u want to delete");
+            alert("Please select the product you want to delete");
         } else {
             var r = confirm("Are you sure you want to delete");
             if (r)

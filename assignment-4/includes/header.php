@@ -17,7 +17,7 @@ ini_set("display_errors", "1");
             <header class="clearfix">
                 <div>
                     <div class="Logo_Cont left col-md-6">
-                        <a href="../Category/index.php"><img src="../images/logo.png" alt=""></a>
+                        <a href="../category/index.php"><img src="../images/logo.png" alt=""></a>
                     </div>
                     <div class="Home_Cont_Right right col-md-6">
                         <div class="Home_Cont_Right_Top left">
@@ -31,8 +31,8 @@ ini_set("display_errors", "1");
                                 <a href="javascript:void(0)">Menu</a></div>
                             <div id="topMenu">
                                 <ul>
-                                    <li><a href="../Category/index.php">Categories</a></li>
-                                    <li><a href="../Product/list_product.php">Products</a></li>
+                                    <li><a href="../category/index.php">Categories</a></li>
+                                    <li><a href="../croduct/list_product.php">Products</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -8,7 +8,7 @@ $error_select = '';
 $error_ext = '';
 $target_dir = '../upload/';
 $pageload = true;
-include '../Includes/db_config.php';
+include '../includes/db_config.php';
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 }
@@ -69,7 +69,7 @@ if ($pageload) {
             $category_id = $row['cat_id'];
         }
     }
-    include '../Includes/header.php';
+    include '../includes/header.php';
     ?>
     <div class="section banner_section who_we_help">
         <div class="container">
@@ -135,7 +135,7 @@ if ($pageload) {
                         <div class="next_btn_block">
                             <div class="next_btn">
                                 <input type="submit"value="Submit" class="btn-success"><img src="../images/small_triangle.png" alt="small_triangle">
-                                <input type="button" class="btn-danger" value="cancel" style="width:75px;height:36px;border:0px" onclick="javascript:window.location = 'list_product.php';"><img src="../images/small_triangle.png" alt="small_triangle">
+                                <input type="button" class="btn-danger" value="Cancel" style="width:75px;height:36px;border:0px" onclick="javascript:window.location = 'list_product.php';"><img src="../images/small_triangle.png" alt="small_triangle">
                             </div>
                         </div>
                     </form>
@@ -189,5 +189,5 @@ if ($pageload) {
                                     });
 
     </script>
-    <?php include '../Includes/footer.php';
+    <?php include '../includes/footer.php';
 } ?>
